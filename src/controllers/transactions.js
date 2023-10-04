@@ -1,6 +1,6 @@
 const format = require('date-fns/format');
-const { contas, saques, depositos, transferencias } = require('../../bankDetails');
-const { checkerBalanceAndExtract, checkerDepositAndWithdraw, toCheckNumberAccount } = require('../../utils/utils-transactions');
+const { contas, saques, depositos, transferencias } = require('../bankDetails');
+const { checkerBalanceAndExtract, checkerDepositAndWithdraw, toCheckNumberAccount } = require('../utils/utils-transactions');
 
 //Deposit to a bank account
 const deposit = (require, response) => {

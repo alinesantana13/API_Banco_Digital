@@ -2,8 +2,8 @@ const knex = require('../connection');
 const jwt = require('jsonwebtoken');
 const passwordHash = require('../passwordHash')
 
-const verifyLogin = async (require, response, next) => {
-    const { authorization } = require.headers;
+const verifyLogin = async (req, res, next) => {
+    const { authorization } = req.headers;
 
     const token = authorization.split(' ')[1];
 
@@ -14,19 +14,19 @@ const verifyLogin = async (require, response, next) => {
 
         const { id } = jwt.verify(token, passwordHash);
 
-        const user = await knex('contas').where({ numeroconta: id });
+        const user = await knex('contas').where({ numeroconta: id }).first();
 
-        if (user[0].length === 0) {
+        if (user === undefined) {
             throw { statusCode: 401, message: "Usuário não autenticado" };
         }
 
-        const { senha: _, ...formatUser } = user[0];
+        const { senha: _, ...formatUser } = user;
 
-        require.user = formatUser;
+        req.user = formatUser;
 
         next();
     } catch (error) {
-        return response.status(error.statuCode || 500).json({ mensagem: 'Não autorizado' })
+        return res.status(500).json({ mensagem: error.message })
     }
 }
 

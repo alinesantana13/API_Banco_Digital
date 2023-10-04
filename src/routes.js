@@ -1,23 +1,29 @@
 const express = require('express');
-const { updateUserData, deleteAccount } = require('./controllers/accounts/accounts');
-const { deposit, withdraw, transfer, balance, extract } = require('./controllers/transactions/transactions');
-const login = require('./controllers/users/login');
+const registerAccount = require('./controllers/registerAccount');
+const login = require('./controllers/login');
+const listAccounts = require('./controllers/listAccounts');
 const verifyLogin = require('./middleware/authentication');
-const listAccounts = require('./controllers/accounts/listAccounts');
-const registerAccount = require('./controllers/users/registerAccount');
+const validateRequest = require('./middleware/validateRequest');
+const userSchema = require('./validations/users');
+const loginSchema = require('./validations/verificationLogin');
+const updateAccount = require('./controllers/updateAccount');
+const deleteAccount = require('./controllers/deleteAccount');
+const { deposit, withdraw, transfer, balance, extract } = require('./controllers/transactions');
+
 
 const routes = express();
 
-routes.post('/cadastro', registerAccount);
-routes.post('/login', login);
+routes.post('/cadastro', validateRequest(userSchema), registerAccount);
+routes.post('/login', validateRequest(loginSchema), login);
 
 routes.get('/contas', listAccounts);
 
 routes.use(verifyLogin);
 
-routes.put('/contas/:numeroConta/usuario', updateUserData);
-routes.delete('/contas/:numeroConta', deleteAccount);
+routes.put('/contas/usuario', updateAccount);
+routes.delete('/contas', deleteAccount);
 
+//atualizar endpoints
 routes.post('/transacoes/depositar', deposit);
 routes.post('/transacoes/sacar', withdraw);
 routes.post('/transacoes/transferir', transfer)

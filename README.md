@@ -1,6 +1,4 @@
-# API para um Banco Digital
-
-### Fazendo atualizações no API
+# API para um Banco Digital v1
 
 O projeto trata sobre o gerenciamento de algumas funcionalidades de uma conta bancária de um banco digital. Criado no desafio M02 de backend da Cubos Academy.
 
@@ -26,9 +24,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 ```bash
 git clone link
 ```
-```bash
-cd desafio-backend-m02-b2bt05
-```
+
 ```bash
 npm install
 ```
@@ -48,7 +44,7 @@ http://localhost:3000
 
 ### Listar contas bancárias
 
-#### A rota `localhost:3000/contas?senha_banco=Cubos123Bank`
+#### rota `localhost:3000/contas?senha_banco=Cubos123Bank`
     - lista todas as contas bancárias existentes.
 
 - **Condição**:
@@ -62,18 +58,9 @@ Se não incluir nenhuma conta será exibido um array vazio.
 
 ### Criar conta bancária
 
-#### A rota `localhost:3000/contas`
+#### rota `localhost:3000/contas`
 
- para identificação da conta (número da conta).
-
--   **Requisição** - O corpo (body) deverá possuir um objeto com as seguintes propriedades (respeitando estes nomes):
-
-    -   nome
-    -   cpf
-    -   data_nascimento
-    -   telefone
-    -   email
-    -   senha
+Esse endpoint cria uma conta bancária.
 
 #### Exemplo de como criar a conta
 
@@ -81,63 +68,34 @@ Se não incluir nenhuma conta será exibido um array vazio.
 
 ### Atualizar usuário da conta bancária
 
-#### A rota `/contas/:numeroConta/usuario`
+#### rota `/contas/:numeroConta/usuario`
 
 Esse endpoint atualiza apenas os dados do usuário de uma conta bancária.
 
--   **Requisição** - O corpo deverá possuir um objeto com todas as seguintes propriedades:
-
-    -   nome
-    -   cpf
-    -   data_nascimento
-    -   telefone
-    -   email
-    -   senha
 
 ### Excluir Conta
 
-#### A rota `/contas/:numeroConta`
+#### rota `/contas/:numeroConta`
 
 Esse endpoint exclui uma conta bancária existente.
 
--   **Requisição**
-
-    -   Numero da conta bancária na rota
-
 ### Depositar
 
-#### A rota `/transacoes/depositar`
+#### rota `/transacoes/depositar`
 
--   **Requisição** - O corpo deve possuir um objeto com as seguintes propriedades:
-
-    -   numero_conta
-    -   valor
+Esse endpoint faz o depósito em uma conta bancária existente.
 
 ### Sacar
 
-#### A rota `/transacoes/sacar`
+#### rota `/transacoes/sacar`
 
 Esse endpoint realiza o saque de um valor da conta bancária informada e registra essa transação.
 
--   **Requisição** - O corpo (body) deverá possuir um objeto com as seguintes propriedades (respeitando estes nomes):
-
-    -   numero_conta
-    -   valor
-    -   senha
-
-
 ### Transferir
 
-#### A rota `/transacoes/transferir`
+#### rota `/transacoes/transferir`
 
 Esse endpoint permite a transferência de dinheiro de uma conta bancária para outra e registra essa transação.
-
--   **Requisição** - O corpo (body) deverá possuir um objeto com as seguintes propriedades (respeitando estes nomes):
-
-    -   numero_conta_origem
-    -   numero_conta_destino
-    -   valor
-    -   senha
 
 ### Saldo
 
@@ -145,24 +103,10 @@ Esse endpoint permite a transferência de dinheiro de uma conta bancária para o
 
 Esse endpoint retorna o saldo de uma conta bancária.
 
--   **Requisição** 
-
-    -   numero_conta
-    -   senha
-
--   **Será exibido**
-
-    -   Saldo da conta
-
 ### Extrato
 
 #### `GET` `/contas/extrato?numero_conta=123&senha=123`
 
 Esse endpoint lista as transações realizadas de uma conta específica.
-
--   **Requisição**
-
-    -   numero_conta
-    -   senha
 
 ###### tags: `back-end` `nodeJS` `API REST`

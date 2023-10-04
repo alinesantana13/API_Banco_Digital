@@ -1,1 +1,1 @@
-module.exports = 'senhadaApidoBanco@@@'
+module.exports = process.env.PASS_HASH;

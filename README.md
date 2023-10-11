@@ -49,7 +49,6 @@ http://localhost:3000 ou o link do deploy
 |Listar contas bancárias | `localhost:3000/contas?senha_banco=Cubos123Bank`|
 |Criar conta bancária | `localhost:3000/contas`|
 | Login | `localhost:3000/login` |
-|`Todos os endpoints abaixo precisam do token de autenticação`|
 | Atualizar usuário da conta bancária |`/contas/:numeroConta/usuario` |
 |Excluir Conta | `/contas/:numeroConta` |
 | Depositar | `/transacoes/depositar`  |

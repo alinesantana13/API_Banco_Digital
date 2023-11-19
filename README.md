@@ -44,18 +44,18 @@ http://localhost:3000 ou o link do deploy
 
 ## Endpoints
 
-| Endpoints | rotas  |
-|-----------|---------|
-|Listar contas bancárias | `localhost:3000/contas?senha_banco=Cubos123Bank`|
-|Criar conta bancária | `localhost:3000/contas`|
-| Login | `localhost:3000/login` |
-| Atualizar usuário da conta bancária |`/contas/:numeroConta/usuario` |
-|Excluir Conta | `/contas/:numeroConta` |
-| Depositar | `/transacoes/depositar`  |
-| Sacar | `/transacoes/sacar` |
-|Transferir | `/transacoes/transferir`|
-| Saldo | `/contas/saldo?numero_conta=123&senha=123` |
-| Extrato |`/contas/extrato?numero_conta=123&senha=123` |
+| Endpoints | Métodos| rotas  |
+|-----------|--------|---------|
+|Listar contas bancárias |GET|`localhost:3000/contas?senha_banco=Cubos123Bank`|
+|Criar conta bancária |POST|`localhost:3000/contas`|
+| Login |POST|`localhost:3000/login` |
+| Atualizar usuário da conta bancária |PUT|`/contas/:numeroConta/usuario` |
+|Excluir Conta |DEL|`/contas/:numeroConta` |
+| Depositar |POST|`/transacoes/depositar`  |
+| Sacar |POST|`/transacoes/sacar` |
+|Transferir |POST|`/transacoes/transferir`|
+| Saldo |GET|`/contas/saldo?numero_conta=123&senha=123` |
+| Extrato |GET|`/contas/extrato?numero_conta=123&senha=123` |
 
 #### Após incluir conta:
 ![](./img/accountList.png)
